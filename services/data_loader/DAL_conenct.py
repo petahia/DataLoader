@@ -12,16 +12,20 @@ class LoadDAL:
         return conn
 
     def execute(self):
-        cursor = conn.cursor()
+        cursor = self.connect().cursor()
         cursor.execute("SELECT * FROM your_table LIMIT 5")
         for row in cursor.fetchall():
             print(row)
         return
 
     def close(self):
-        cursor.close()
-        conn.close()
-        
+        self.connect().cursor().close()
+        self.connect().close()
+
+
+
+
+
 
 
 
